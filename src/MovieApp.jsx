@@ -7,7 +7,7 @@ export const MovieApp = () => {
   const [movieList, setMovieList] = useState(null)
 
   const urlBase = "https://api.themoviedb.org/3/search/movie"
-  const API_KEY = "YOUR_API_KEY"
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
   const handleInputChange = ({target}) => {
     setSearch(target.value)    
@@ -20,13 +20,24 @@ export const MovieApp = () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`${urlBase}?query=${search}&api_key=${API_KEY}&language=es-ES`)
+      const response = await fetch(`${urlBase}?query=${encodeURIComponent(search)}&api_key=${API_KEY}&language=es-ES`)
       const data = await response.json()
-      console.log(data);
       setMovieList(data.results)
     } catch (error) {
       console.error("Ha ocurrido el siguiente error:", error)
     }
+  }
+
+  if (!API_KEY) {
+    return (
+      <div className="container">
+        <h1>Buscador de Películas</h1>
+        <p className="config-error">
+          Falta configurar la API key de TheMovieDB. Copiá el archivo <code>.env.example</code> a{" "}
+          <code>.env</code>, definí <code>VITE_TMDB_API_KEY</code> con tu clave y reiniciá el servidor de desarrollo.
+        </p>
+      </div>
+    )
   }
 
   return (
