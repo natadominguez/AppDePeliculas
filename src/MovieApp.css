@@ -56,29 +56,62 @@ button:hover {
 .movie-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
     gap: 20px;
 }
 
 .movie-card {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(142,70,210);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.movie-card img {
+.movie-card img,
+.poster-placeholder {
     width: 100%;
-    height: auto;
+    aspect-ratio: 2 / 3;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.movie-card img {
+    object-fit: cover;
+}
+
+.poster-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgb(22, 18, 23);
+    color: #ccc;
+    font-size: 14px;
+}
+
+.poster-placeholder-icon {
+    font-size: 48px;
 }
 
 .movie-card h2 {
     font-size: 18px;
     margin: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
 }
 
 .movie-card p {
     font-size: 14px;
     margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
 }

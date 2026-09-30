@@ -56,9 +56,16 @@ export const MovieApp = () => {
           <div className="movie-list">
             {movieList.map(movie => (
               <div key={movie.id} className="movie-card">
-                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                {movie.poster_path ? (
+                  <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                ) : (
+                  <div className="poster-placeholder" role="img" aria-label={`${movie.title}: sin imagen disponible`}>
+                    <span className="poster-placeholder-icon" aria-hidden="true">🎬</span>
+                    <span>Sin imagen disponible</span>
+                  </div>
+                )}
                 <h2>{movie.title}</h2>
-                <p>{movie.overview}</p>
+                <p>{movie.overview?.trim() || "Sin sinopsis disponible"}</p>
               </div>
             ))}
           </div>
