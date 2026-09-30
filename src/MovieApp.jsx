@@ -60,7 +60,11 @@ export const MovieApp = () => {
                   <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                 ) : (
                   <div className="poster-placeholder" role="img" aria-label={`${movie.title}: sin imagen disponible`}>
-                    <span className="poster-placeholder-icon" aria-hidden="true">🎬</span>
+                    <svg className="poster-placeholder-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <circle cx="9" cy="10" r="1.5" />
+                      <path d="M21 16l-5-5-8 8" />
+                    </svg>
                     <span>Sin imagen disponible</span>
                   </div>
                 )}
