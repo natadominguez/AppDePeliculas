@@ -38,6 +38,21 @@ button:hover {
     background-color: rgb(147, 84, 206);
 }
 
+.config-error {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    line-height: 1.5;
+}
+
+.config-error code {
+    background-color: rgba(138, 43, 226, 0.25);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
 .movie-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
