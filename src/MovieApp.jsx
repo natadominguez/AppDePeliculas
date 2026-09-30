@@ -56,9 +56,20 @@ export const MovieApp = () => {
           <div className="movie-list">
             {movieList.map(movie => (
               <div key={movie.id} className="movie-card">
-                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                {movie.poster_path ? (
+                  <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                ) : (
+                  <div className="poster-placeholder" role="img" aria-label={`${movie.title}: sin imagen disponible`}>
+                    <svg className="poster-placeholder-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <circle cx="9" cy="10" r="1.5" />
+                      <path d="M21 16l-5-5-8 8" />
+                    </svg>
+                    <span>Sin imagen disponible</span>
+                  </div>
+                )}
                 <h2>{movie.title}</h2>
-                <p>{movie.overview}</p>
+                <p>{movie.overview?.trim() || "Sin sinopsis disponible"}</p>
               </div>
             ))}
           </div>
