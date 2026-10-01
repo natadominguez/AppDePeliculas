@@ -10,6 +10,7 @@ Aplicación web para buscar películas en tiempo real con datos de [TheMovieDB](
 [![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![TMDB API](https://img.shields.io/badge/API-TMDB-01B4E4?logo=themoviedatabase&logoColor=white)](https://developer.themoviedb.org/)
 [![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?logo=netlify&logoColor=white)](https://movie-app-natan.netlify.app/)
+[![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](LICENSE)
 
 [**Ver demo en vivo**](https://movie-app-natan.netlify.app/)
 
@@ -28,6 +29,7 @@ Aplicación web para buscar películas en tiempo real con datos de [TheMovieDB](
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Despliegue](#despliegue)
 - [Créditos](#créditos)
+- [Licencia](#licencia)
 - [Autor](#autor)
 
 ## Funcionalidades
@@ -115,6 +117,7 @@ AppDePeliculas/
 │   ├── MovieApp.jsx      # Componente principal: búsqueda, consulta a TMDB y render de resultados
 │   ├── MovieApp.css      # Estilos del layout, el buscador y las cards
 │   └── index.css         # Variables de tema y estilos globales
+├── LICENSE               # Licencia MIT
 ├── .env.example          # Plantilla de variables de entorno
 ├── index.html            # HTML base y carga de fuentes (Inter y Oswald)
 ├── eslint.config.js
@@ -139,6 +142,10 @@ El proyecto está desplegado en **Netlify**. Para publicar tu propia copia:
 - Datos e imágenes provistos por [TheMovieDB](https://www.themoviedb.org/).
 
 *Este producto usa la API de TMDB, pero no está respaldado ni certificado por TMDB.*
+
+## Licencia
+
+Distribuido bajo la licencia MIT. Ver [`LICENSE`](LICENSE) para más información.
 
 ## Autor
 
