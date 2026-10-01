@@ -38,7 +38,8 @@ button:hover {
     background-color: rgb(147, 84, 206);
 }
 
-.config-error {
+.config-error,
+.no-results {
     max-width: 600px;
     margin: 0 auto;
     padding: 15px;

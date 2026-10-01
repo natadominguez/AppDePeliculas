@@ -5,6 +5,7 @@ export const MovieApp = () => {
 
   const [search, setSearch] = useState('')
   const [movieList, setMovieList] = useState(null)
+  const [searchedTerm, setSearchedTerm] = useState('')
 
   const urlBase = "https://api.themoviedb.org/3/search/movie"
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY
@@ -15,13 +16,16 @@ export const MovieApp = () => {
 
   const handleSubmit = (event) =>{
     event.preventDefault()
+    if (!search.trim()) return
     fetchMovies()
   }
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`${urlBase}?query=${encodeURIComponent(search)}&api_key=${API_KEY}&language=es-ES`)
+      const query = search.trim()
+      const response = await fetch(`${urlBase}?query=${encodeURIComponent(query)}&api_key=${API_KEY}&language=es-ES`)
       const data = await response.json()
+      setSearchedTerm(query)
       setMovieList(data.results)
     } catch (error) {
       console.error("Ha ocurrido el siguiente error:", error)
@@ -47,12 +51,19 @@ export const MovieApp = () => {
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Busca tu pelicula"
             value={search}
-            onChange={handleInputChange} />
+            onChange={handleInputChange}
+            required />
 
             <button>Buscar</button>
         </form>
 
-        {movieList && (
+        {movieList?.length === 0 && (
+          <p className="no-results" role="status">
+            No se encontraron películas para «{searchedTerm}».
+          </p>
+        )}
+
+        {movieList?.length > 0 && (
           <div className="movie-list">
             {movieList.map(movie => (
               <div key={movie.id} className="movie-card">
