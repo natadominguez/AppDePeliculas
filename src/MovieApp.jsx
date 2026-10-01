@@ -52,7 +52,7 @@ export const MovieApp = () => {
     <div className="app">
       <header className="hero">
         <h1>Buscador de <span>Películas</span></h1>
-        <p className="hero-subtitle">Tu próxima película favorita está a una búsqueda de distancia.</p>
+        <p className="hero-subtitle">Millones de historias te esperan. ¿Cuál vas a descubrir hoy?</p>
 
         <form className="search-form" onSubmit={handleSubmit}>
           <svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true">
