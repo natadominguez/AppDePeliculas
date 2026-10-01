@@ -114,7 +114,9 @@ AppDePeliculas/
 ├── docs/                 # Capturas usadas en este README
 ├── src/
 │   ├── main.jsx          # Punto de entrada: monta <MovieApp /> en el DOM
-│   ├── MovieApp.jsx      # Componente principal: búsqueda, consulta a TMDB y render de resultados
+│   ├── services/
+│   │   └── movieService.js  # Acceso a la API de TMDB: searchMovies, getPosterUrl
+│   ├── MovieApp.jsx      # Componente principal: estado de la búsqueda y render de resultados
 │   ├── MovieApp.css      # Estilos del layout, el buscador y las cards
 │   └── index.css         # Variables de tema y estilos globales
 ├── LICENSE               # Licencia MIT

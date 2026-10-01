@@ -1,14 +1,12 @@
 import { useState } from "react"
 import "./MovieApp.css"
+import { getPosterUrl, isApiKeyConfigured, searchMovies } from "./services/movieService"
 
 export const MovieApp = () => {
 
   const [search, setSearch] = useState('')
   const [movieList, setMovieList] = useState(null)
   const [searchedTerm, setSearchedTerm] = useState('')
-
-  const urlBase = "https://api.themoviedb.org/3/search/movie"
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
   const handleInputChange = ({target}) => {
     setSearch(target.value)    
@@ -21,18 +19,17 @@ export const MovieApp = () => {
   }
 
   const fetchMovies = async () => {
+    const query = search.trim()
     try {
-      const query = search.trim()
-      const response = await fetch(`${urlBase}?query=${encodeURIComponent(query)}&api_key=${API_KEY}&language=es-ES`)
-      const data = await response.json()
+      const results = await searchMovies(query)
       setSearchedTerm(query)
-      setMovieList(data.results)
+      setMovieList(results)
     } catch (error) {
       console.error("Ha ocurrido el siguiente error:", error)
     }
   }
 
-  if (!API_KEY) {
+  if (!isApiKeyConfigured) {
     return (
       <div className="app">
         <header className="hero">
@@ -82,7 +79,7 @@ export const MovieApp = () => {
               <article key={movie.id} className="movie-card">
                 <div className="movie-poster">
                   {movie.poster_path ? (
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} loading="lazy" />
+                    <img src={getPosterUrl(movie.poster_path)} alt={movie.title} loading="lazy" />
                   ) : (
                     <div className="poster-placeholder" role="img" aria-label={`${movie.title}: sin imagen disponible`}>
                       <svg className="poster-placeholder-icon" viewBox="0 0 24 24" aria-hidden="true">
