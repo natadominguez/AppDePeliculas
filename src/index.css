@@ -1,7 +1,30 @@
+:root {
+  --bg: #0d0a12;
+  --surface: #17121f;
+  --surface-hover: #1f1829;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f4f1f8;
+  --text-muted: #a59cb3;
+  --accent: #8a2be2;
+  --accent-light: #b57bff;
+  --accent-gradient: linear-gradient(135deg, #8a2be2 0%, #d946ef 100%);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: rgb(22, 18, 23);
-  color: white;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 15% -10%, rgba(138, 43, 226, 0.28), transparent 60%),
+    radial-gradient(700px 400px at 90% 0%, rgba(217, 70, 239, 0.16), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
